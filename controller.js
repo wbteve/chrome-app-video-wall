@@ -1,6 +1,7 @@
 function WallCtrl($scope) {
 
-	var defaultDropText = "Drop files here";
+	var defaultDropText = "Drop files here",
+		errorHandler;
   	$scope.dropText = defaultDropText;
 
   	var dragOver = function(e) {
@@ -27,10 +28,9 @@ function WallCtrl($scope) {
     	var newFiles=[];
     	if (e.dataTransfer.types.indexOf('Files') >= 0) {
       		var files = e.dataTransfer.files;
-      		console.log(files);
-
       		for (var i = 0; i < files.length; i++) {
     		var text = files[i].name+', '+files[i].size+' bytes';
+    		console.log(text);
         	newFiles.push({text:text, done:false, file: files[i]});
       	}
     } else { // uris
@@ -46,6 +46,29 @@ function WallCtrl($scope) {
       }
       $scope.save();
     });
+
+   //  function onInitFs(fs) {
+
+	  // window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, errorHandler);
+
+	  // fs.root.getFile('log.txt', {}, function(fileEntry) {
+
+	  //   // Get a File object representing the file,
+	  //   // then use FileReader to read its contents.
+	  //   fileEntry.file(function(file) {
+	  //      var reader = new FileReader();
+
+	  //      reader.onloadend = function(e) {
+	  //        var txtArea = document.createElement('textarea');
+	  //        txtArea.value = this.result;
+	  //        document.body.appendChild(txtArea);
+	  //      };
+
+	  //      reader.readAsText(file);
+	  //   }, errorHandler);
+
+	  // }, errorHandler);
+	// }
   }
 
   document.body.addEventListener("dragover", dragOver, false);
