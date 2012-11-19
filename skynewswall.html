@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app ng-csp>
 <head>
 
 <!--
@@ -16,44 +16,46 @@
 <title>Sky News - News Wall</title>
 	<link rel="stylesheet" type="text/css" href="snowstack.css">
 	<script src="lib/angular.min.js"></script>
+	<script src="controller.js"></script>
+	<script type="text/javascript" src="snowstack.js"></script>
+	<script type="text/javascript" src="lib/jquery.1.61.min.js"></script>
 </head>
 
-<body>
+<body ng-controller="WallCtrl" ng-class="dropClass">
 
-<div class="bgfx"></div>
+	<div class="bgfx"></div>
 
-<div class="page view">
-    <div class="origin view">
-        <div id="camera" class="camera view"></div>
-    </div>
-</div>
+	<div class="drop-area">{{dropText}}</div>
 
-<div id="footer-wrapper">
-    <div id="caption" class="caption">
-        Sky News Wall / arrow keys to move, space toggles magnify, enter to play
-    </div>
-    <div id="controls">
-        <span id="sort_options">
-            Sort: <button onClick="snowstack_sort('date')">Date</button> 
-        </span>
-        <span id="find_options">
-            Find: <input id="find" type="search">
-        </span>
-        <span>
-        	Categories: <select name="category">
-                <option value="local">Local</option>
-                <option value="socialmedia">Social Media</option>
-                <option value="sports">Sports</option>
-                </select>
-                
-        </span>
-      </div>
-</div>
+	<div class="page view">
+	    <div class="origin view">
+	        <div id="camera" class="camera view"></div>
+	    </div>
+	</div>
+
+	<div id="footer-wrapper">
+	    <div id="caption" class="caption">
+	        Sky News Wall / arrow keys to move, space toggles magnify, enter to play
+	    </div>
+	    <div id="controls">
+	        <span id="sort_options">
+	            Sort: <button onClick="snowstack_sort('date')">Date</button> 
+	        </span>
+	        <span id="find_options">
+	            Find: <input id="find" type="search">
+	        </span>
+	        <span>
+	        	Categories: <select name="category">
+	                <option value="local">Local</option>
+	                <option value="socialmedia">Social Media</option>
+	                <option value="sports">Sports</option>
+	                </select>
+	                
+	        </span>
+	      </div>
+	</div>
 
 
-<script type="text/javascript" src="snowstack.js"></script>
-<!--<script type="text/javascript" src="snowstack-youtube.js"></script> this is playing videos -->
-<script type="text/javascript" src="jquery.1.61.min.js"></script>
 <script type="text/javascript">
 
 var starter = 0;		
