@@ -164,3 +164,39 @@ div.magnify video.media
 {
 	-webkit-transform: translate3d(0, 0, 0) scale(2.0);
 }
+
+
+
+
+
+
+
+
+
+
+.drop-area {
+	background-color: #333;
+	border: 1px solid #666;
+	color: #666;
+	display: block;
+	font-size: 20px;
+	margin: 5px;
+	padding: 20px;
+	text-align: center;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 30px #000 inset;
+}
+
+@-webkit-keyframes switch-green {
+  from { background-color: white;} to {background-color: rgb(163, 255, 163);}
+}
+@-webkit-keyframes switch-red {
+  from { background-color: white;} to {background-color: rgb(255, 203, 203);}
+}
+.dragging .drop-area {
+  -webkit-animation: switch-green 0.5s ease-in-out 0 infinite alternate;
+}
+
+.invalid-dragging .drop-area {
+  -webkit-animation: switch-red 0.5s ease-in-out 0 infinite alternate;
+}
