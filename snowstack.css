@@ -188,10 +188,10 @@ div.magnify video.media
 }
 
 @-webkit-keyframes switch-green {
-  from { background-color: white;} to {background-color: rgb(163, 255, 163);}
+  from { background-color: #333;} to {background-color: #555;}
 }
 @-webkit-keyframes switch-red {
-  from { background-color: white;} to {background-color: rgb(255, 203, 203);}
+  from { background-color: #333;} to {background-color: rgb(255, 203, 203);}
 }
 .dragging .drop-area {
   -webkit-animation: switch-green 0.5s ease-in-out 0 infinite alternate;

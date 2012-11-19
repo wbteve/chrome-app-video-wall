@@ -1,24 +1,19 @@
 function WallCtrl($scope) {
 
-	console.log('in controller');
-
 	var defaultDropText = "Drop files here";
   	$scope.dropText = defaultDropText;
 
   	var dragOver = function(e) {
-  		console.log('drag over');
 	    e.stopPropagation();
 	    e.preventDefault();
 	    var valid = e.dataTransfer && e.dataTransfer.types && ( e.dataTransfer.types.indexOf('Files') >= 0 || e.dataTransfer.types.indexOf('text/uri-list') >=0 )
 	    $scope.$apply(function() {
-	      	$scope.dropText = valid ? "Drop files and remote images and they will become Todos" : "Can only drop files and remote images here";
-	      	console.log("dragging");
+	      	$scope.dropText = valid ? "Drop the file here..." : "Can't drop that type of file";
 	      	$scope.dropClass = valid ? "dragging" : "invalid-dragging";
 	    });
   	}
 
   	var dragLeave = function(e) {
-  		console.log('drag leave');
     	$scope.$apply(function() {
       		$scope.dropText = defaultDropText;
       		$scope.dropClass = '';
@@ -26,13 +21,14 @@ function WallCtrl($scope) {
   	}
 
   	var drop = function(e) {
-  		console.log('drop');
     	e.preventDefault();
     	e.stopPropagation();
 
     	var newFiles=[];
     	if (e.dataTransfer.types.indexOf('Files') >= 0) {
       		var files = e.dataTransfer.files;
+      		console.log(files);
+
       		for (var i = 0; i < files.length; i++) {
     		var text = files[i].name+', '+files[i].size+' bytes';
         	newFiles.push({text:text, done:false, file: files[i]});
@@ -51,5 +47,9 @@ function WallCtrl($scope) {
       $scope.save();
     });
   }
+
+  document.body.addEventListener("dragover", dragOver, false);
+  document.body.addEventListener("dragleave", dragLeave, false);
+  document.body.addEventListener("drop", drop, false);
 
 }
